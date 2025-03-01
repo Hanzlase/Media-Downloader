@@ -5,28 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Downloader</title>
-    
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- Linking Local CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body class="light-mode">
     <div class="container">
-        <!-- Toggle Dark/Light Mode -->
         <button id="toggle-mode" class="toggle-button" aria-label="Toggle dark/light mode">
             <i class="fas fa-moon"></i>
         </button>
 
-        <!-- Logo and Title -->
         <div class="logo-container">
             <i class="fas fa-download logo-icon"></i>
             <h1><i class="fas fa-cloud-download-alt"></i> Media Downloader</h1>
         </div>
 
-        <!-- Supported Platforms Icons -->
         <div class="platforms">
             <div class="platform"><i class="fab fa-youtube"></i></div>
             <div class="platform"><i class="fab fa-instagram"></i></div>
@@ -37,46 +30,61 @@
             <div class="platform"><i class="fab fa-pinterest"></i></div>
         </div>
 
-        <!-- URL Input Form -->
         <form id="download-form" action="{{ url_for('download') }}" method="post">
             <div class="input-container">
                 <i class="fas fa-link input-icon"></i>
                 <input type="text" id="url" name="url" placeholder="Paste URL here..." required>
             </div>
 
-            <!-- Video Quality Selection for YouTube -->
             <div id="youtube-options" class="hidden">
                 <h3>Select Video Quality</h3>
                 <div class="quality-options">
-                    <label><input type="radio" name="quality" value="1"><span>144p</span></label>
-                    <label><input type="radio" name="quality" value="2"><span>240p</span></label>
-                    <label><input type="radio" name="quality" value="3"><span>360p</span></label>
-                    <label><input type="radio" name="quality" value="4"><span>480p</span></label>
-                    <label><input type="radio" name="quality" value="5"><span>720p</span></label>
-                    <label><input type="radio" name="quality" value="6"><span>1080p</span></label>
-                    <label><input type="radio" name="quality" value="7" checked><span>Best Available</span></label>
+                    <label>
+                        <input type="radio" name="quality" value="1">
+                        <span class="quality-label">144p</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="2">
+                        <span class="quality-label">240p</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="3">
+                        <span class="quality-label">360p</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="4">
+                        <span class="quality-label">480p</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="5">
+                        <span class="quality-label">720p</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="6">
+                        <span class="quality-label">1080p</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="7" checked>
+                        <span class="quality-label">Best Available</span>
+                    </label>
                 </div>
             </div>
 
-            <!-- Download Button -->
             <button type="submit" class="download-button">
                 <i class="fas fa-download"></i> Download
             </button>
         </form>
 
-        <!-- Download Progress Bar -->
         <div id="progress-container" class="hidden">
             <progress id="download-progress" value="0" max="100"></progress>
             <span id="progress-percentage">0%</span>
         </div>
 
-        <!-- Loading Animation -->
         <div id="loading" class="hidden">
             <div class="loader"></div>
             <p>Downloading your content...</p>
         </div>
 
-        <!-- Download Result -->
         {% if result %}
         <div class="result">
             <h2><i class="fas fa-check-circle"></i> Download Complete</h2>
@@ -88,12 +96,10 @@
         {% endif %}
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>Supported platforms: YouTube, Instagram, Facebook, Twitter, TikTok, Reddit, Pinterest</p>
     </footer>
 
-    <!-- JavaScript Link -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 
